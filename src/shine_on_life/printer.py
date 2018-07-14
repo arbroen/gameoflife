@@ -9,7 +9,7 @@ Printing is going to be fancy as fly. With colors.
 import os
 import platform
 
-from src.life.board import Board
+from src.shine_on_life.board import Board
 
 
 def clear_shell_display():
