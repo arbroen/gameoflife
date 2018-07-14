@@ -17,7 +17,8 @@ requires = [
 
 # Dev requirements
 dev_requires = [
-    "pytest==3.6.3"
+    "pytest==3.6.3",
+    "tox==3.1.2"
 ]
 
 about = {}
