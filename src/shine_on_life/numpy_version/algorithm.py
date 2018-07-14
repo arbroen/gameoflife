@@ -2,8 +2,8 @@
 # -*- coding: utf8 -*-
 import time
 
-from shine_on_life.printer import board_printer
-from shine_on_life.board import Board
+from shine_on_life.numpy_version.printer import board_printer
+from shine_on_life.numpy_version.board import Board
 
 
 def running(generations, increment):

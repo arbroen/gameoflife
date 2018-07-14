@@ -9,7 +9,7 @@ Printing is going to be fancy as fly. With colors.
 import os
 import platform
 
-from shine_on_life.board import Board
+from shine_on_life.numpy_version.board import Board
 
 
 def clear_shell_display():

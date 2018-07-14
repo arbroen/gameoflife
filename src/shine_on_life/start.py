@@ -2,8 +2,8 @@
 # -*- coding: utf8 -*-
 import click
 
-from shine_on_life.board import MIN_WIDTH_HEIGHT
-from shine_on_life.algorithm import game_of_life
+from shine_on_life.numpy_version.board import MIN_WIDTH_HEIGHT
+from shine_on_life.numpy_version.algorithm import game_of_life
 
 
 @click.command()

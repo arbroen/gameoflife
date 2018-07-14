@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
-from shine_on_life.board import Board
+from shine_on_life.numpy_version.board import Board
 
 
 def _get_living_cells(board: Board):
