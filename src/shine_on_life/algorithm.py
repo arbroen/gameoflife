@@ -2,8 +2,8 @@
 # -*- coding: utf8 -*-
 import time
 
-from .printer import board_printer
-from .board import Board
+from shine_on_life.printer import board_printer
+from shine_on_life.board import Board
 
 
 def game_of_life(height: int, width: int, generations: int):
