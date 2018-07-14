@@ -9,13 +9,19 @@ from shine_on_life.algorithm import game_of_life
 @click.command()
 @click.argument(
     'generations', type=click.INT)
-@click.argument(
-    'height', default=MIN_WIDTH_HEIGHT,
+@click.option(
+    '-h', '--height', default=MIN_WIDTH_HEIGHT,
     type=click.IntRange(min=MIN_WIDTH_HEIGHT, max=50))
 @click.option(
     '-w', '--width', default=MIN_WIDTH_HEIGHT,
     type=click.IntRange(min=MIN_WIDTH_HEIGHT, max=50),
-    help="The width of the table. Note, that a high number might not display"
-         " correctly in your shell.")
-def cmd_line(height, generations, width):
-    game_of_life(width=width, generations=generations, height=height)
+    )
+def cmd_line(generations, height, width):
+    """
+    This script kicks of the Shine of Life algorithm.
+
+    GENERATIONS is the amount of life-cycles it goes through before stopping.
+    Input 0 for an infinity loop.
+    """
+    game_of_life(
+        width=width, generations=generations, height=height)
