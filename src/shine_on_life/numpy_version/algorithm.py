@@ -2,8 +2,10 @@
 # -*- coding: utf8 -*-
 import time
 
-from shine_on_life.numpy_version.printer import board_printer
-from shine_on_life.numpy_version.board import Board
+from shine_on_life.conf import settings
+
+from .printer import board_printer
+from .board import Board
 
 
 def running(generations, increment):
@@ -23,5 +25,5 @@ def game_of_life(height: int, width: int, generations: int):
     while running(generations, increment):
         board = Board(height=height, width=width)
         board_printer(board=board)
-        time.sleep(.25)
+        time.sleep(settings.DEFAULT_REFRESH_TIME)
         increment += 1

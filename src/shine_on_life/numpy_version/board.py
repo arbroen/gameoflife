@@ -2,8 +2,7 @@
 # -*- coding: utf8 -*-
 import numpy as np
 
-
-MIN_WIDTH_HEIGHT = 10
+from shine_on_life.conf import settings
 
 
 class Cell:
@@ -21,10 +20,10 @@ class Board:
     _width: int = None
     _two_d_array: np.ndarray = None
 
-    def __init__(self, height: int, width: int) -> None:
+    def __init__(self, height: int=None, width: int=None):
         # A low randint indicates an two-dimensional array of zeros and ones.
-        self.width = width
-        self.height = height
+        self.width = width or settings.DEFAULT_BOARD_WIDTH
+        self.height = height or settings.DEFAULT_BOARD_HEIGHT
         self._two_d_array = np.random.randint(
             low=2, size=(self.width, self.height), dtype=int)
 
