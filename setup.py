@@ -11,12 +11,13 @@ META_FILE = SETUP_DIR / "src" / "shine_on_life" / "__version__.py"
 # Project requirements
 requires = [
     "click==6.7",
-    "python-decouple==3.1"
+    "python-decouple==3.1",
+    "numpy==1.14.3"
 ]
 
 # Dev requirements
 dev_requires = [
-
+    "pytest==3.6.3"
 ]
 
 about = {}
@@ -45,7 +46,7 @@ setup(
     package_dir={"": "src"},
     packages=find_packages("src", exclude=["tests"]),
     install_requires=requires,
-    extras_require={},
+    extras_require={"dev": dev_requires},
     package_data={},
     data_files=[],
     entry_points={  # Optional

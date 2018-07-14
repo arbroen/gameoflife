@@ -58,40 +58,8 @@ class Board:
         """Used by the printer function."""
         return self._two_d_array
 
-    def _get_living_cells(self):
-        """
-        These cells have either 2 or 3 neighbours that are also alive,
-        and hence, they will stay alive for another generation.
-        :return:
-        """
+    def kill_cell(self, point):
         pass
 
-    def _get_dying_cells(self):
-        """
-        Two conditions apply for dying cells.
-        - Overcrowding. Four or more living neighbours.
-        - Underpopulation. Two or less neighbours are still alive.
-        :return:
-        """
-
-    def _get_growing_cells(self):
-        """
-        If a cell has exactly three living neighbours, this dead cell will
-        sprout new life.
-        :return:
-        """
-
-    def _error_check(self):
-        """
-        Checks whether no cells index match with the others.
-        :return:
-        """
-
-    def _kill_cells(self, locations):
-        pass
-
-    def _birth_cells(self, locations):
-        pass
-
-    def mutate(self):
+    def grow_cell(self, point):
         pass
