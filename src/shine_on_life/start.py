@@ -1,8 +1,7 @@
-#!/usr/bin/python
 # -*- coding: utf8 -*-
 import click
 
-from shine_on_life.numpy_version.board import MIN_WIDTH_HEIGHT
+from shine_on_life.conf import settings
 from shine_on_life.numpy_version.algorithm import game_of_life
 
 
@@ -10,12 +9,11 @@ from shine_on_life.numpy_version.algorithm import game_of_life
 @click.argument(
     'generations', type=click.INT)
 @click.option(
-    '-h', '--height', default=MIN_WIDTH_HEIGHT,
-    type=click.IntRange(min=MIN_WIDTH_HEIGHT, max=50))
+    '-h', '--height', default=settings.MINIMAL_BOARD_HEIGHT,
+    type=click.IntRange(min=settings.MINIMAL_BOARD_HEIGHT, max=50))
 @click.option(
-    '-w', '--width', default=MIN_WIDTH_HEIGHT,
-    type=click.IntRange(min=MIN_WIDTH_HEIGHT, max=50),
-    )
+    '-w', '--width', default=settings.MINIMAL_BOARD_WIDTH,
+    type=click.IntRange(min=settings.MINIMAL_BOARD_WIDTH, max=50))
 def cmd_line(generations, height, width):
     """
     This script kicks of the Shine of Life algorithm.

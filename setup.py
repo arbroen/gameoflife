@@ -1,4 +1,4 @@
-#!/usr/bin/python
+
 # -*- coding: utf8 -*-
 from setuptools import setup, find_packages
 from pathlib import Path

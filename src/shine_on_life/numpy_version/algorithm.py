@@ -1,11 +1,10 @@
-#!/usr/bin/python
 # -*- coding: utf8 -*-
 import time
 
 from shine_on_life.conf import settings
 
 from .printer import board_printer
-from .board import Board
+from .boards import random_board
 
 
 def running(generations, increment):
@@ -23,7 +22,7 @@ def game_of_life(height: int, width: int, generations: int):
     increment = 0
 
     while running(generations, increment):
-        board = Board(height=height, width=width)
+        board = random_board(height=height, width=width)
         board_printer(board=board)
         time.sleep(settings.DEFAULT_REFRESH_TIME)
         increment += 1

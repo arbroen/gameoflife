@@ -1,4 +1,4 @@
-#!/usr/bin/python
+
 # -*- coding: utf8 -*-
 """
 Printing is going to be fancy as fly. With colors.
@@ -9,7 +9,7 @@ Printing is going to be fancy as fly. With colors.
 import os
 import platform
 
-from shine_on_life.numpy_version.board import Board
+from numpy import ndarray
 
 
 def clear_shell_display():
@@ -22,13 +22,13 @@ def clear_shell_display():
         os.system("clear")
 
 
-def board_printer(board: Board):
+def board_printer(board: ndarray):
     # Print the numpy array as such
     clear_shell_display()
     _temp = ""
 
-    for i in range(board.contents.shape[1]):
-        _temp += "  ".join([str(x) for x in board.contents[:, i]])
+    for i in range(board.shape[1]):
+        _temp += "  ".join([str(x) for x in board[:, i]])
         _temp += "\n"
 
     print('\033[34m{msg}\033[0m'.format(msg=_temp), flush=True)

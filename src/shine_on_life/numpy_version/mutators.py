@@ -1,9 +1,9 @@
-#!/usr/bin/python
+
 # -*- coding: utf8 -*-
-from shine_on_life.numpy_version.board import Board
+from numpy import ndarray
 
 
-def _get_living_cells(board: Board):
+def _get_living_cells(board: ndarray):
     """
     These cells have either 2 or 3 neighbours that are also alive,
     and hence, they will stay alive for another generation.
@@ -12,7 +12,7 @@ def _get_living_cells(board: Board):
     pass
 
 
-def _get_dying_cells(board: Board):
+def _get_dying_cells(board: ndarray):
     """
     Two conditions apply for dying cells.
     - Overcrowding. Four or more living neighbours.
@@ -21,7 +21,7 @@ def _get_dying_cells(board: Board):
     """
 
 
-def _get_growing_cells(board: Board):
+def _get_growing_cells(board: ndarray):
     """
     If a cell has exactly three living neighbours, this dead cell will
     sprout new life.
@@ -29,7 +29,7 @@ def _get_growing_cells(board: Board):
     """
 
 
-def _error_check(board: Board):
+def _error_check(board: ndarray):
     """
     Checks whether no cells index match with the others.
     :return:
@@ -44,5 +44,5 @@ def _genesis(locations):
     pass
 
 
-def mutate(board: Board):
+def mutate(board: ndarray):
     pass
