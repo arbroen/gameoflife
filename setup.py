@@ -1,4 +1,3 @@
-
 # -*- coding: utf8 -*-
 from setuptools import setup, find_packages
 from pathlib import Path
@@ -38,8 +37,8 @@ setup(
     ],
     package_dir={"": "src"},
     packages=find_packages("src", exclude=["tests"]),
-    install_requires=get_requirements("default"),
-    extras_require={"test": get_requirements("test")},
+    install_requires=get_requirements("default.txt"),
+    extras_require={"test": get_requirements("test.txt")},
     package_data={},
     data_files=[],
     entry_points={  # Optional
