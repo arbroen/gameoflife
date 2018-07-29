@@ -1,4 +1,3 @@
-
 # -*- coding: utf8 -*-
 """
 Printing is going to be fancy as fly. With colors.
