@@ -8,18 +8,10 @@ SETUP_DIR = Path.cwd()
 README_FILE = SETUP_DIR / "README.md"
 META_FILE = SETUP_DIR / "src" / "shine_on_life" / "__version__.py"
 
-# Project requirements
-requires = [
-    "click==6.7",
-    "python-decouple==3.1",
-    "numpy==1.14.3"
-]
 
-# Dev requirements
-dev_requires = [
-    "pytest==3.6.3",
-    "tox==3.1.2"
-]
+def get_requirements(filename):
+    return open('requirements/' + filename).read().splitlines()
+
 
 about = {}
 # Get the long description from the README file
@@ -46,8 +38,8 @@ setup(
     ],
     package_dir={"": "src"},
     packages=find_packages("src", exclude=["tests"]),
-    install_requires=requires,
-    extras_require={"dev": dev_requires},
+    install_requires=get_requirements("default"),
+    extras_require={"test": get_requirements("test")},
     package_data={},
     data_files=[],
     entry_points={  # Optional
