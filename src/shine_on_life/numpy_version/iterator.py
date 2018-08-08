@@ -27,7 +27,7 @@ def neighbour_counter(board: ndarray) -> \
 
         subset = board[top_row: bottom_row, left_column: right_column]
 
-        if current_cell is 1:
+        if current_cell == 1:
             yield row, column, subset.sum() - 1
         else:
             yield row, column, subset.sum()
