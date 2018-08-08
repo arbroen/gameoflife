@@ -3,7 +3,7 @@ import pytest
 
 from numpy import array, array_equal
 
-from shine_on_life.numpy_version.iterator import iterate_3x3_shapes
+from shine_on_life.numpy_version.iterator import neighbour_counter
 
 
 class TestIteration:
@@ -12,7 +12,7 @@ class TestIteration:
         empty = array([])
 
         with pytest.raises(AttributeError) as e:
-            x = iterate_3x3_shapes(empty)
+            x = neighbour_counter(empty)
             next(x)
 
         msg = "It is only possible to iterate over two-dimensional boards."
@@ -23,7 +23,7 @@ class TestIteration:
         empty = array([[], [], []])
 
         with pytest.raises(StopIteration):
-            x = iterate_3x3_shapes(empty)
+            x = neighbour_counter(empty)
             assert next(x) is None
 
     def test_empty_3d_array(self):
@@ -31,7 +31,7 @@ class TestIteration:
         empty = array([[[]], [[]], [[]]])
 
         with pytest.raises(AttributeError) as e:
-            x = iterate_3x3_shapes(empty)
+            x = neighbour_counter(empty)
             next(x)
 
         msg = "It is only possible to iterate over two-dimensional boards."
@@ -46,7 +46,7 @@ class TestIteration:
         ])
 
         # This implies 9 iterations
-        subsets = [x for x in iterate_3x3_shapes(input_board)]
+        subsets = [x for x in neighbour_counter(input_board)]
 
         assert len(subsets) == 9
 
@@ -66,20 +66,20 @@ class TestIteration:
         """Most basic use-case testing"""
 
         input_board = array([
-            [1, 2, 3, 4],
-            [1, 2, 3, 4]
+            [1, 0, 1, 0],
+            [1, 1, 1, 0]
         ])
 
         # This implies 8 iterations
-        subsets = [x for x in iterate_3x3_shapes(input_board)]
+        all_iterations = [x for x in neighbour_counter(input_board)]
 
-        assert len(subsets) == 8
+        assert len(all_iterations) == 8
 
         # The first corner 0, 0
-        assert array_equal(subsets[0], [[1, 2], [1, 2]])
+        assert all_iterations[0] == (0, 0, 3)
 
-        # The third element
-        assert array_equal(subsets[2], [[2, 3, 4], [2, 3, 4]])
+        # The last corner 1, 3
+        assert all_iterations[7] == (1, 3, 2)
 
-        # The last corner 3, 3
-        assert array_equal(subsets[7], [[3, 4], [3, 4]])
+        # The 3rd value
+        assert all_iterations[2] == (0, 2, 2)

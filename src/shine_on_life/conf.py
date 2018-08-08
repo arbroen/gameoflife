@@ -25,8 +25,7 @@ class _Settings:
     DEFAULT_BOARD_HEIGHT = \
         config("DEFAULT_BOARD_HEIGHT", default=MINIMAL_BOARD_HEIGHT, cast=int)
     DEFAULT_REFRESH_TIME = \
-        config("DEFAULT_REFRESH_TIME", default=.25, cast=float)
+        config("DEFAULT_REFRESH_TIME", default=2, cast=float)
 
 
 settings = _Settings()
-print('\033[33m{msg}\033[0m'.format(msg=settings.DEBUG), flush=True)

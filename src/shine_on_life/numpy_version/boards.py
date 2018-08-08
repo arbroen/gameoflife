@@ -1,10 +1,18 @@
 # -*- coding: utf8 -*-
+import enum
+
 from numpy import random, int8
 
 from shine_on_life.conf import settings
 
 
 __data_type__ = int8
+
+
+class CellTypes(enum.IntEnum):
+    DEAD = 0
+    ALIVE = 1
+    SPAWNED = 1
 
 
 def random_board(height: int, width: int):
