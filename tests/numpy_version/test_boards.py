@@ -4,4 +4,6 @@ from shine_on_life.numpy_version.boards import random_board
 
 class TestRandomBoard:
     def test_functional_board(self):
-        pass
+        b = random_board(10, 10)
+
+        assert len(b) == 10

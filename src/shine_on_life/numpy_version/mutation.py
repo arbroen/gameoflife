@@ -33,7 +33,7 @@ def _cell_spawns(count: int) -> bool:
     return count == 3
 
 
-def mutation(board: ndarray):
+def board_mutator(board: ndarray):
     """
     Applies the various mutations to the entire board.
     :param board:

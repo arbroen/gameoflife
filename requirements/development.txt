@@ -1,2 +1,4 @@
 -r test.txt
+-r default.txt
 flake8==3.5.0
+tox==3.1.2

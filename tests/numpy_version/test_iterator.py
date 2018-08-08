@@ -3,7 +3,7 @@ import pytest
 
 from numpy import array, zeros
 
-from shine_on_life.numpy_version.iterator import neighbour_counter
+from shine_on_life.numpy_version.iteration import neighbour_counter
 
 
 class TestIteration:

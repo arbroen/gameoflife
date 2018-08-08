@@ -5,6 +5,7 @@ from pathlib import Path
 
 SETUP_DIR = Path.cwd()
 README_FILE = SETUP_DIR / "README.md"
+PYTHON_VERSION = SETUP_DIR / "runtime.txt"
 META_FILE = SETUP_DIR / "src" / "shine_on_life" / "__version__.py"
 
 
@@ -14,12 +15,16 @@ def get_requirements(filename):
 
 about = {}
 # Get the project meta_data from __version__.py file
-with open(META_FILE.absolute(), mode="r", encoding="utf-8") as f:
+with META_FILE.open(mode="r", encoding="utf-8") as f:
     exec(f.read(), about)
 
 # Get the long description from the README file
-with open(README_FILE.absolute(), mode="r", encoding="utf-8") as f:
+with README_FILE.open(mode="r", encoding="utf-8") as f:
     long_description = f.read()
+
+# Get the long description from the README file
+with PYTHON_VERSION.open(mode="r", encoding="utf-8") as f:
+    python_version = f.read().strip()
 
 
 setup(
@@ -39,17 +44,11 @@ setup(
     package_dir={"": "src"},
     packages=find_packages("src", exclude=["tests"]),
     install_requires=get_requirements("default.txt"),
-    test_suite="tests",
-    tests_require=get_requirements("test.txt"),
-    extras_require={
-        # "dev": get_requirements("development.txt")
-    },
     package_data={},
     data_files=[],
     entry_points={  # Optional
         "console_scripts": [
-            "shine=shine_on_life.start:cmd_line",
-        ],
+            "shine=shine_on_life.start:cmd_line"]
     },
     project_urls={},
 )

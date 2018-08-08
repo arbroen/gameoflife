@@ -7,7 +7,7 @@ from shine_on_life.conf import settings
 
 from .printer import board_printer
 from .boards import random_board
-from .mutators import mutation
+from .mutation import board_mutator
 
 
 def still_alive(generations: int, increment: int, board: ndarray) -> bool:
@@ -36,7 +36,7 @@ def game_of_life(height: int, width: int, generations: int) -> None:
     board_printer(board=board)
 
     while still_alive(generations, increment, board):
-        board = mutation(board=board)
+        board = board_mutator(board=board)
         board_printer(board=board)
         time.sleep(settings.DEFAULT_REFRESH_TIME)
         increment += 1
