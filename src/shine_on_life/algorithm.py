@@ -5,9 +5,9 @@ from numpy import ndarray
 
 from shine_on_life.conf import settings
 
-from .printer import board_printer
-from .boards import random_board
-from .mutation import board_mutator
+from shine_on_life.printer import board_printer
+from shine_on_life.boards import random_board
+from shine_on_life.mutation import board_mutator
 
 
 def still_alive(generations: int, increment: int, board: ndarray) -> bool:

@@ -2,7 +2,7 @@
 import click
 
 from shine_on_life.conf import settings
-from shine_on_life.numpy_version.algorithm import game_of_life
+from shine_on_life.algorithm import game_of_life
 
 
 @click.command()

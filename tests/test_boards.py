@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-from shine_on_life.numpy_version.boards import random_board
+from shine_on_life.boards import random_board
 
 
 class TestRandomBoard:

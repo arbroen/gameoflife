@@ -2,7 +2,7 @@
 from numpy import ndarray
 
 from .iterator import neighbour_counter
-from .boards import CellTypes
+from shine_on_life.boards import CellTypes
 
 
 def _cell_lives(count: int) -> bool:
