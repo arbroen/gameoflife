@@ -13,13 +13,14 @@ def get_requirements(filename):
 
 
 about = {}
+# Get the project meta_data from __version__.py file
+with open(META_FILE.absolute(), mode="r", encoding="utf-8") as f:
+    exec(f.read(), about)
+
 # Get the long description from the README file
 with open(README_FILE.absolute(), mode="r", encoding="utf-8") as f:
     long_description = f.read()
 
-# Get the project meta_data from __version__.py file
-with open(META_FILE.absolute(), mode="r", encoding="utf-8") as f:
-    exec(f.read(), about)
 
 setup(
     name=about["__project__"],
@@ -28,7 +29,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     # url="https://github.com/pypa/sampleproject",
-    author="ME",
+    author="Jeroen",
     author_email="",
     classifiers=[
         "Intended Audience :: Developers",
@@ -38,7 +39,11 @@ setup(
     package_dir={"": "src"},
     packages=find_packages("src", exclude=["tests"]),
     install_requires=get_requirements("default.txt"),
-    extras_require={"test": get_requirements("test.txt")},
+    test_suite="tests",
+    tests_require=get_requirements("test.txt"),
+    extras_require={
+        # "dev": get_requirements("development.txt")
+    },
     package_data={},
     data_files=[],
     entry_points={  # Optional
