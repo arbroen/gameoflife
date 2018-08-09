@@ -1,9 +1,9 @@
 # -*- coding: utf8 -*-
-from shine_on_life.world import random_board
+from shine_on_life.worlds import random_world
 
 
 class TestRandomBoard:
     def test_functional_board(self):
-        b = random_board(10, 10)
+        b = random_world(10, 10)
 
         assert len(b) == 10

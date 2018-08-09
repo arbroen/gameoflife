@@ -1,12 +1,12 @@
 # -*- coding: utf8 -*-
 import time
 
-from numpy import ndarray
+from numpy import ndarray, count_nonzero
 
 from shine_on_life.conf import settings
 
+from shine_on_life.worlds import random_world
 from shine_on_life.printer import world_printer
-from shine_on_life.world import random_board
 from shine_on_life.mutation import world_mutator
 
 
@@ -18,7 +18,7 @@ def still_alive(generations: int, increment: int, world: ndarray) -> bool:
     :param world:
     :return:
     """
-    if world.sum() == 0:
+    if not count_nonzero(world):
         return False
 
     if generations == 0:
@@ -32,7 +32,7 @@ def game_of_life(height: int, width: int, generations: int) -> None:
     Should combine all the logic into one point of truth.
     """
     increment = 0
-    world = random_board(height=height, width=width)
+    world = random_world(height=height, width=width)
     world_printer(board=world)
 
     while still_alive(generations, increment, world):

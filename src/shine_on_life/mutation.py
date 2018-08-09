@@ -1,7 +1,10 @@
 # -*- coding: utf8 -*-
-from numpy import ndarray, ndenumerate, count_nonzero, zeros, int8
+from typing import Tuple
 
-from shine_on_life.world import CellTypes
+from numpy import ndarray, ndenumerate, count_nonzero, zeros
+
+from shine_on_life.worlds import CellTypes
+from shine_on_life.conf import settings
 
 
 def cell_lives(cycle: CellTypes, count: int) -> bool:
@@ -22,7 +25,7 @@ def cell_spawns(cycle: CellTypes, count: int) -> bool:
     return cycle is CellTypes.DEAD and count == 3
 
 
-def neighbour_count(cell_index: int, world: ndarray) -> int:
+def neighbour_count(cell_index: Tuple[int, int], world: ndarray) -> int:
     """
     Counts the number of cells neighbouring the index that are alive.
     """
@@ -40,17 +43,16 @@ def neighbour_count(cell_index: int, world: ndarray) -> int:
     return count_nonzero(subset)
 
 
-def world_mutator(world: ndarray):
+def world_mutator(world: ndarray) -> ndarray:
     """
     Applies the various mutations to the entire world of cells.
     :param world:
     :return:
     """
-    _new_world = zeros(shape=world.shape, dtype=int8)
+    _new_world = zeros(shape=world.shape, dtype=settings.NUMPY_DATA_TYPE)
 
     for index, cell_value in ndenumerate(world):
-        next_cycle = CellTypes.DEAD
-        previous_cycle = CellTypes(cell_value)
+        previous_cycle, next_cycle = CellTypes(cell_value), CellTypes.DEAD
         count = neighbour_count(cell_index=index, world=world)
 
         if cell_lives(cycle=previous_cycle, count=count):

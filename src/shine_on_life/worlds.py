@@ -12,7 +12,7 @@ class CellTypes(enum.IntEnum):
     SPAWNED = 1
 
 
-def random_board(height: int, width: int):
+def random_world(height: int, width: int):
     """
     Constructs a numpy ndarray of the given height and width with random
     living cells, denoted by integer 1.
