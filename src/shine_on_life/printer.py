@@ -7,6 +7,7 @@ Printing is going to be fancy as fly. With colors.
 """
 import os
 import platform
+import colorama
 
 from numpy import ndarray
 
@@ -21,10 +22,15 @@ def clear_shell_display():
         os.system("clear")
 
 
-def board_printer(board: ndarray):
-    # Print the numpy array as such
+def world_printer(board: ndarray):
+    """
+    Transform the ndarray into something visually appetizing.
+    :param board:
+    :return:
+    """
     clear_shell_display()
     _temp = ""
+    print('\033[32m{msg}\033[0m'.format(msg="-" * 10), flush=True)
 
     for i in range(board.shape[1]):
         _temp += "  ".join([str(x) for x in board[:, i]])

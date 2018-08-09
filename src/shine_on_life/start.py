@@ -10,10 +10,10 @@ from shine_on_life.algorithm import game_of_life
     'generations', type=click.INT)
 @click.option(
     '-h', '--height', default=settings.MINIMAL_BOARD_HEIGHT,
-    type=click.IntRange(min=settings.MINIMAL_BOARD_HEIGHT, max=50))
+    type=click.IntRange(min=3, max=50))
 @click.option(
     '-w', '--width', default=settings.MINIMAL_BOARD_WIDTH,
-    type=click.IntRange(min=settings.MINIMAL_BOARD_WIDTH, max=50))
+    type=click.IntRange(min=3, max=50))
 def cmd_line(generations, height, width):
     """
     This script kicks of the Shine of Life algorithm.

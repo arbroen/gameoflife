@@ -1,17 +1,14 @@
 # -*- coding: utf8 -*-
 import enum
 
-from numpy import random, int8
+from numpy import random
 
 from shine_on_life.conf import settings
 
 
-__data_type__ = int8
-
-
 class CellTypes(enum.IntEnum):
     DEAD = 0
-    ALIVE = 1
+    ALIVE = 2
     SPAWNED = 1
 
 
@@ -26,18 +23,18 @@ def random_board(height: int, width: int):
     """
     _errors = []
 
-    if width < settings.MINIMAL_BOARD_WIDTH:
-        _errors.append(
-            "A board's width is at least {minimal}.".format(
-                minimal=settings.MINIMAL_BOARD_WIDTH))
-
-    if height < settings.MINIMAL_BOARD_WIDTH:
-        _errors.append(
-            "A board's height is at least {minimal}.".format(
-                minimal=settings.MINIMAL_BOARD_WIDTH))
+    # if width < settings.MINIMAL_BOARD_WIDTH:
+    #     _errors.append(
+    #         "A board's width is at least {minimal}.".format(
+    #             minimal=settings.MINIMAL_BOARD_WIDTH))
+    #
+    # if height < settings.MINIMAL_BOARD_WIDTH:
+    #     _errors.append(
+    #         "A board's height is at least {minimal}.".format(
+    #             minimal=settings.MINIMAL_BOARD_WIDTH))
 
     if _errors:
         raise TypeError("\n".join(_errors))
 
     return random.randint(
-        low=2, size=(width, height), dtype=__data_type__)
+        low=2, size=(width, height), dtype=settings.NUMPY_DATA_TYPE)
