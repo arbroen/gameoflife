@@ -43,6 +43,25 @@ def neighbour_count(cell_index: Tuple[int, int], world: ndarray) -> int:
     return count_nonzero(subset)
 
 
+def next_mutation(index: Tuple[int, int], world: ndarray) -> CellTypes:
+    """
+    Deterimines the next state of the given cell.
+    :param index:
+    :param cell_value:
+    :param world:
+    :return:
+    """
+    previous_cycle, next_cycle = CellTypes(world[index]), CellTypes.DEAD
+    count = neighbour_count(cell_index=index, world=world)
+
+    if cell_lives(cycle=previous_cycle, count=count):
+        next_cycle = CellTypes.ALIVE
+    elif cell_spawns(cycle=previous_cycle, count=count):
+        next_cycle = CellTypes.SPAWNED
+
+    return next_cycle
+
+
 def world_mutator(world: ndarray) -> ndarray:
     """
     Applies the various mutations to the entire world of cells.
@@ -52,14 +71,6 @@ def world_mutator(world: ndarray) -> ndarray:
     _new_world = zeros(shape=world.shape, dtype=settings.NUMPY_DATA_TYPE)
 
     for index, cell_value in ndenumerate(world):
-        previous_cycle, next_cycle = CellTypes(cell_value), CellTypes.DEAD
-        count = neighbour_count(cell_index=index, world=world)
-
-        if cell_lives(cycle=previous_cycle, count=count):
-            next_cycle = CellTypes.ALIVE
-        elif cell_spawns(cycle=previous_cycle, count=count):
-            next_cycle = CellTypes.SPAWNED
-
-        _new_world[index] = next_cycle
+        _new_world[index] = next_mutation(index=index, world=world)
 
     return _new_world

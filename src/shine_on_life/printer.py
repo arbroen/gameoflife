@@ -7,9 +7,11 @@ Printing is going to be fancy as fly. With colors.
 """
 import os
 import platform
-import colorama
 
+from colorama import Fore
 from numpy import ndarray
+
+from .worlds import CellTypes
 
 
 def clear_shell_display():
@@ -22,6 +24,13 @@ def clear_shell_display():
         os.system("clear")
 
 
+COLOUR_SCHEME = {
+    CellTypes.DEAD: Fore.LIGHTBLACK_EX,
+    CellTypes.SPAWNED: Fore.GREEN,
+    CellTypes.ALIVE: Fore.YELLOW
+}
+
+
 def world_printer(board: ndarray):
     """
     Transform the ndarray into something visually appetizing.
@@ -30,7 +39,6 @@ def world_printer(board: ndarray):
     """
     clear_shell_display()
     _temp = ""
-    print('\033[32m{msg}\033[0m'.format(msg="-" * 10), flush=True)
 
     for i in range(board.shape[1]):
         _temp += "  ".join([str(x) for x in board[:, i]])

@@ -26,6 +26,7 @@ class _Settings:
         config("DEFAULT_BOARD_HEIGHT", default=MINIMAL_BOARD_HEIGHT, cast=int)
     DEFAULT_REFRESH_TIME = \
         config("DEFAULT_REFRESH_TIME", default=10, cast=float)
+    # Numpy specifics
     NUMPY_DATA_TYPE = "int8"
 
 
