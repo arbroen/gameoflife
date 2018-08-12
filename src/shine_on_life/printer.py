@@ -8,10 +8,23 @@ Printing is going to be fancy as fly. With colors.
 import os
 import platform
 
-from colorama import Fore
 from numpy import ndarray
+from typing import Callable
+from colorama import init as colorama_init
+from colorama import Fore, Style
 
 from .worlds import CellTypes
+
+
+COLOUR_SCHEME = {
+    CellTypes.DEAD.value: Fore.LIGHTBLACK_EX,
+    CellTypes.SPAWNED.value: Fore.GREEN,
+    CellTypes.ALIVE.value: Fore.YELLOW
+}
+
+
+def colorize(value) -> str:
+    return COLOUR_SCHEME[value] + str(value)
 
 
 def clear_shell_display():
@@ -24,24 +37,38 @@ def clear_shell_display():
         os.system("clear")
 
 
-COLOUR_SCHEME = {
-    CellTypes.DEAD: Fore.LIGHTBLACK_EX,
-    CellTypes.SPAWNED: Fore.GREEN,
-    CellTypes.ALIVE: Fore.YELLOW
-}
-
-
-def world_printer(board: ndarray):
+class WorldContextPrinter:
     """
-    Transform the ndarray into something visually appetizing.
-    :param board:
-    :return:
+    Class to be used as a context manager that encapsulates the colorama
+    library to properly init colorama and close off any open colour coding.
     """
-    clear_shell_display()
-    _temp = ""
+    def __init__(self, print_func: Callable=None, formatter: Callable=None):
+        """
+        This init is required bye the colorama package for windows support.
+        See docs: https://pypi.org/project/colorama/
 
-    for i in range(board.shape[1]):
-        _temp += "  ".join([str(x) for x in board[:, i]])
-        _temp += "\n"
+        Could be writing to regular file logs by passing a different
+        print_func and formatter for example.
+        """
+        colorama_init()
+        self.print_function = print_func or print
+        self.formatter = formatter or colorize
 
-    print('\033[34m{msg}\033[0m'.format(msg=_temp), flush=True)
+    def __call__(self, *args, **kwargs):
+        return self.print(*args, **kwargs)
+
+    def __enter__(self):
+        return self
+
+    def print(self, world: ndarray):
+        clear_shell_display()
+        _temp = ""
+
+        for i in range(world.shape[1]):
+            _temp += "  ".join([self.formatter(x) for x in world[:, i]])
+            _temp += "\n"
+
+        self.print_function(_temp)
+
+    def __exit__(self, *args):
+        self.print_function(Style.RESET_ALL)
