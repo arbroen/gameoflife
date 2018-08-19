@@ -9,7 +9,7 @@ from shine_on_life.printer import WorldContextPrinter
 from shine_on_life.mutation import world_mutation
 
 
-def still_alive(generations: int, increment: int, world: ndarray) -> bool:
+def still_alive(world: ndarray, generations: int, increment: int) -> bool:
     """
     Determines whether there is still life or that we want to continue living.
     :param generations:
@@ -28,14 +28,15 @@ def still_alive(generations: int, increment: int, world: ndarray) -> bool:
 
 def game_generator(world: ndarray, generations: int) -> ndarray:
     """
-
+    Generates the next sequence of life.
     :param world:
     :param generations:
     :return:
     """
     increment = 0
 
-    while still_alive(generations, increment, world):
+    while still_alive(
+            generations=generations, increment=increment, world=world):
         world = world_mutation(world=world)
         increment += 1
         yield world

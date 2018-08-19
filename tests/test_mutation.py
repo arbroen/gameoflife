@@ -6,7 +6,7 @@ from shine_on_life.mutation import cell_lives, cell_spawns, cell_mutation, \
     neighbour_count, world_mutation
 
 
-class TestCycleConditions:
+class TestMutation:
     def test_cell_spawns_life(self):
         """
         Only one specific scenario creates new life.
@@ -102,7 +102,5 @@ class TestCycleConditions:
              [0, 0, 0, 0, 2, 0, 0],
              [0, 0, 0, 0, 2, 1, 0],
              [2, 0, 2, 0, 0, 0, 0]]
-        print('\033[31m{msg}\033[0m'.format(
-            msg=world_mutation(world=medium_world)), flush=True)
         next_world_medium = world_mutation(world=medium_world)
         assert_array_equal(x=next_world_medium, y=medium_expected)
