@@ -6,7 +6,7 @@ from numpy import ndarray, count_nonzero
 from shine_on_life.conf import settings
 from shine_on_life.worlds import random_world
 from shine_on_life.printer import WorldContextPrinter
-from shine_on_life.mutation import world_mutator
+from shine_on_life.mutation import world_mutation
 
 
 def still_alive(generations: int, increment: int, world: ndarray) -> bool:
@@ -26,16 +26,30 @@ def still_alive(generations: int, increment: int, world: ndarray) -> bool:
     return generations != increment
 
 
+def game_generator(world: ndarray, generations: int) -> ndarray:
+    """
+
+    :param world:
+    :param generations:
+    :return:
+    """
+    increment = 0
+
+    while still_alive(generations, increment, world):
+        world = world_mutation(world=world)
+        increment += 1
+        yield world
+
+
 def game_of_life(height: int, width: int, generations: int) -> None:
     """
     Should combine all the logic into one point of truth.
     """
-    increment = 0
-    world = random_world(height=height, width=width)
+    new_world = random_world(height=height, width=width)
 
     with WorldContextPrinter() as printer:
-        while still_alive(generations, increment, world):
+        printer(world=new_world)
+
+        for world in game_generator(world=new_world, generations=generations):
             time.sleep(settings.DEFAULT_REFRESH_TIME)
-            world = world_mutator(world=world)
             printer(world=world)
-            increment += 1

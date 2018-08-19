@@ -9,7 +9,7 @@ _HERE = Path(__file__).absolute()
 
 # Override regular config to be able to set search path for .env/.ini files.
 config = AutoConfig(
-    search_path=os.environ.get("ENV_FILE_PATH", default=_HERE))
+    search_path=os.environ.get("SHINE_ENV_FILE_PATH", default=_HERE))
 
 
 class _Settings:
@@ -25,7 +25,7 @@ class _Settings:
     DEFAULT_BOARD_HEIGHT = \
         config("DEFAULT_BOARD_HEIGHT", default=MINIMAL_BOARD_HEIGHT, cast=int)
     DEFAULT_REFRESH_TIME = \
-        config("DEFAULT_REFRESH_TIME", default=2, cast=float)
+        config("DEFAULT_REFRESH_TIME", default=.5, cast=float)
     # Numpy specifics
     NUMPY_DATA_TYPE = "int8"
 
