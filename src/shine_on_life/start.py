@@ -5,7 +5,24 @@ from shine_on_life.conf import settings
 from shine_on_life.algorithm import game_of_life
 
 
-@click.command()
+@click.group()
+def commands():
+    """
+    Groups all commands nicely together. #fancy click library.
+    :return:
+    """
+    pass
+
+
+@commands.command()
+def preset():
+    """
+    Game of life with a preset starting world.
+    """
+    pass
+
+
+@commands.command()
 @click.argument(
     'generations', type=click.INT)
 @click.option(
@@ -14,9 +31,9 @@ from shine_on_life.algorithm import game_of_life
 @click.option(
     '-w', '--width', default=settings.MINIMAL_BOARD_WIDTH,
     type=click.IntRange(min=3, max=50))
-def cmd_line(generations, height, width):
+def random(generations, height, width):
     """
-    This script kicks of the Shine of Life algorithm.
+    Game of life with a random starting world.
 
     GENERATIONS is the amount of life-cycles it goes through before stopping.
     Input 0 for an infinity loop.

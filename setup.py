@@ -34,12 +34,13 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     # url="https://github.com/pypa/sampleproject",
-    author="Jeroen",
-    author_email="",
+    author=about["__author__"],
+    author_email=about["__email__"],
     classifiers=[
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
     ],
     package_dir={"": "src"},
     packages=find_packages("src", exclude=["tests"]),
@@ -48,7 +49,7 @@ setup(
     data_files=[],
     entry_points={  # Optional
         "console_scripts": [
-            "shine=shine_on_life.start:cmd_line"]
+            "shine=shine_on_life.start:commands"]
     },
     project_urls={},
 )
