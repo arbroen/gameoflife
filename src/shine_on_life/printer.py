@@ -15,7 +15,6 @@ from colorama import Fore, Style
 
 from .worlds import CellTypes
 
-
 COLOUR_SCHEME = {
     CellTypes.DEAD.value: Fore.LIGHTBLACK_EX,
     CellTypes.SPAWNED.value: Fore.GREEN,
@@ -42,7 +41,9 @@ class WorldContextPrinter:
     Class to be used as a context manager that encapsulates the colorama
     library to properly init colorama and close off any open colour coding.
     """
-    def __init__(self, print_func: Callable=None, formatter: Callable=None):
+
+    def __init__(self, print_func: Callable = None,
+                 formatter: Callable = None):
         """
         This init is required bye the colorama package for windows support.
         See docs: https://pypi.org/project/colorama/
@@ -55,7 +56,7 @@ class WorldContextPrinter:
         self.formatter = formatter or colorize
 
     def __call__(self, *args, **kwargs):
-        return self.print(*args, **kwargs)
+        return self.print_function(*args, **kwargs)
 
     def __enter__(self):
         return self
