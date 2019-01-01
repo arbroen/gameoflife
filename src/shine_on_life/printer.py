@@ -8,7 +8,8 @@ Printing is going to be fancy as fly. With colors.
 import os
 import platform
 
-from numpy import ndarray
+import numpy as np
+
 from typing import Callable
 from colorama import init as colorama_init
 from colorama import Fore, Style
@@ -42,8 +43,8 @@ class WorldContextPrinter:
     library to properly init colorama and close off any open colour coding.
     """
 
-    def __init__(self, print_func: Callable = None,
-                 formatter: Callable = None):
+    def __init__(
+            self, print_func: Callable = None, formatter: Callable = None):
         """
         This init is required bye the colorama package for windows support.
         See docs: https://pypi.org/project/colorama/
@@ -56,12 +57,12 @@ class WorldContextPrinter:
         self.formatter = formatter or colorize
 
     def __call__(self, *args, **kwargs):
-        return self.print_function(*args, **kwargs)
+        return self.print(*args, **kwargs)
 
     def __enter__(self):
         return self
 
-    def print(self, world: ndarray):
+    def print(self, world: np.ndarray):
         clear_shell_display()
         _temp = ""
 

@@ -5,24 +5,24 @@ from shine_on_life.conf import settings
 from shine_on_life.algorithm import game_of_life
 
 
-@click.group()
-def commands():
-    """
-    Groups all commands nicely together. #fancy click library.
-    :return:
-    """
-    pass
+# @click.group()
+# def commands():
+#     """
+#     Groups all commands nicely together. #fancy click library.
+#     :return:
+#     """
+#     pass
+#
+#
+# @commands.command()
+# def preset():
+#     """
+#     Game of life with a preset starting world.
+#     """
+#     pass
 
 
-@commands.command()
-def preset():
-    """
-    Game of life with a preset starting world.
-    """
-    pass
-
-
-@commands.command()
+@click.command()
 @click.argument(
     'generations', type=click.INT)
 @click.option(
@@ -31,7 +31,7 @@ def preset():
 @click.option(
     '-w', '--width', default=settings.MINIMAL_BOARD_WIDTH,
     type=click.IntRange(min=settings.MINIMAL_BOARD_WIDTH, max=50))
-def random(generations, height, width):
+def commands(generations, height, width):
     """
     Game of life with a random starting world.
 

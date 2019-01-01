@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 import time
 
-from numpy import ndarray, count_nonzero
+import numpy as np
 
 from shine_on_life.conf import settings
 from shine_on_life.worlds import random_world
@@ -9,7 +9,7 @@ from shine_on_life.printer import WorldContextPrinter
 from shine_on_life.mutation import world_mutation
 
 
-def still_alive(world: ndarray, generations: int, increment: int) -> bool:
+def still_alive(world: np.ndarray, generations: int, increment: int) -> bool:
     """
     Determines whether there is still life or that we want to continue living.
     :param generations:
@@ -17,7 +17,7 @@ def still_alive(world: ndarray, generations: int, increment: int) -> bool:
     :param world:
     :return:
     """
-    if not count_nonzero(world):
+    if not np.count_nonzero(world):
         return False
 
     if generations == 0:
@@ -26,7 +26,7 @@ def still_alive(world: ndarray, generations: int, increment: int) -> bool:
     return generations != increment
 
 
-def game_generator(world: ndarray, generations: int) -> ndarray:
+def game_generator(world: np.ndarray, generations: int) -> np.ndarray:
     """
     Generates the next sequence of life.
     :param world:
