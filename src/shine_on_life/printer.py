@@ -5,9 +5,6 @@ Printing is going to be fancy as fly. With colors.
 - green ones are freshly spouted.
 - red zeros just perished.
 """
-import os
-import platform
-
 import numpy as np
 
 from typing import Callable
@@ -25,16 +22,6 @@ COLOUR_SCHEME = {
 
 def colorize(value) -> str:
     return COLOUR_SCHEME[value] + str(value)
-
-
-def clear_shell_display():
-    """
-    Didn't test this method. But ah well, A for effort, if I say so myself.
-    """
-    if platform.system() == "Windows":
-        os.system("cls")
-    else:
-        os.system("clear")
 
 
 class WorldContextPrinter:
@@ -55,6 +42,12 @@ class WorldContextPrinter:
         self.print_function = print_func or print
         self.formatter = formatter or colorize
 
+    def clear_shell_display(self):
+        """
+        Didn't test this method. But ah well, A for effort, if I say so myself.
+        """
+        self.print_function(chr(27) + "[2J")
+
     def __call__(self, *args, **kwargs):
         return self.print(*args, **kwargs)
 
@@ -62,7 +55,7 @@ class WorldContextPrinter:
         return self
 
     def print(self, world: np.ndarray):
-        clear_shell_display()
+        self.clear_shell_display()
         _temp = ""
 
         for i in range(world.shape[1]):
