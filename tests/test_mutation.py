@@ -2,8 +2,13 @@
 from numpy.testing import assert_array_equal
 
 from shine_on_life.worlds import CellTypes
-from shine_on_life.mutation import cell_lives, cell_spawns, cell_mutation, \
-    neighbour_count, world_mutation
+from shine_on_life.mutation import (
+    cell_lives,
+    cell_spawns,
+    cell_mutation,
+    neighbour_count,
+    world_mutation,
+)
 
 
 class TestMutation:
@@ -64,20 +69,13 @@ class TestMutation:
         :param small_world:
         :return:
         """
-        assert cell_mutation(
-            index=(0, 0), world=small_world) == CellTypes.DEAD
-        assert cell_mutation(
-            index=(0, 3), world=small_world) == CellTypes.ALIVE
-        assert cell_mutation(
-            index=(3, 0), world=small_world) == CellTypes.DEAD
-        assert cell_mutation(
-            index=(1, 2), world=small_world) == CellTypes.DEAD
-        assert cell_mutation(
-            index=(3, 3), world=small_world) == CellTypes.ALIVE
-        assert cell_mutation(
-            index=(1, 1), world=small_world) == CellTypes.SPAWNED
-        assert cell_mutation(
-            index=(3, 1), world=small_world) == CellTypes.SPAWNED
+        assert cell_mutation(index=(0, 0), world=small_world) == CellTypes.DEAD
+        assert cell_mutation(index=(0, 3), world=small_world) == CellTypes.ALIVE
+        assert cell_mutation(index=(3, 0), world=small_world) == CellTypes.DEAD
+        assert cell_mutation(index=(1, 2), world=small_world) == CellTypes.DEAD
+        assert cell_mutation(index=(3, 3), world=small_world) == CellTypes.ALIVE
+        assert cell_mutation(index=(1, 1), world=small_world) == CellTypes.SPAWNED
+        assert cell_mutation(index=(3, 1), world=small_world) == CellTypes.SPAWNED
 
     def test_world_mutation(self, small_world, medium_world):
         """
@@ -86,21 +84,18 @@ class TestMutation:
         :param medium_world:
         :return:
         """
-        expected = \
-            [[0, 0, 2, 2],
-             [0, 1, 0, 0],
-             [0, 2, 0, 2],
-             [0, 1, 0, 2]]
+        expected = [[0, 0, 2, 2], [0, 1, 0, 0], [0, 2, 0, 2], [0, 1, 0, 2]]
         next_world = world_mutation(world=small_world)
         assert_array_equal(x=next_world, y=expected)
 
-        medium_expected = \
-            [[0, 0, 2, 2, 0, 0, 2],
-             [0, 1, 0, 0, 0, 0, 0],
-             [0, 2, 0, 0, 0, 0, 2],
-             [2, 0, 0, 0, 0, 1, 0],
-             [0, 0, 0, 0, 2, 0, 0],
-             [0, 0, 0, 0, 2, 1, 0],
-             [2, 0, 2, 0, 0, 0, 0]]
+        medium_expected = [
+            [0, 0, 2, 2, 0, 0, 2],
+            [0, 1, 0, 0, 0, 0, 0],
+            [0, 2, 0, 0, 0, 0, 2],
+            [2, 0, 0, 0, 0, 1, 0],
+            [0, 0, 0, 0, 2, 0, 0],
+            [0, 0, 0, 0, 2, 1, 0],
+            [2, 0, 2, 0, 0, 0, 0],
+        ]
         next_world_medium = world_mutation(world=medium_world)
         assert_array_equal(x=next_world_medium, y=medium_expected)

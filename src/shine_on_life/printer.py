@@ -19,7 +19,7 @@ from .worlds import CellTypes
 COLOUR_SCHEME = {
     CellTypes.DEAD.value: Fore.LIGHTBLACK_EX,
     CellTypes.SPAWNED.value: Fore.GREEN,
-    CellTypes.ALIVE.value: Fore.YELLOW
+    CellTypes.ALIVE.value: Fore.YELLOW,
 }
 
 
@@ -43,8 +43,7 @@ class WorldContextPrinter:
     library to properly init colorama and close off any open colour coding.
     """
 
-    def __init__(
-            self, print_func: Callable = None, formatter: Callable = None):
+    def __init__(self, print_func: Callable = None, formatter: Callable = None):
         """
         This init is required bye the colorama package for windows support.
         See docs: https://pypi.org/project/colorama/

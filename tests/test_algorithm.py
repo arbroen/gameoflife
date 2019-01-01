@@ -27,22 +27,22 @@ class TestAlgorithm:
         :return:
         """
         all_worlds = [
-            world for world in game_generator(
-                world=small_world, generations=0)]
+            world for world in game_generator(world=small_world, generations=0)
+        ]
 
         assert len(all_worlds) == 7
 
         all_medium_worlds = [
-            world for world in game_generator(
-                world=medium_world, generations=0)]
+            world for world in game_generator(world=medium_world, generations=0)
+        ]
 
         assert len(all_medium_worlds) == 9
 
         overpopulated_world = ones((10, 10))
 
         food_for_though = [
-            world for world in game_generator(
-                world=overpopulated_world, generations=0)]
+            world for world in game_generator(world=overpopulated_world, generations=0)
+        ]
 
         # 2 instances because the corners apparently survive.
         assert len(food_for_though) == 2

@@ -24,23 +24,31 @@ def is_valid_world(world: ndarray):
     if width < settings.MINIMAL_BOARD_WIDTH:
         _errors.append(
             "A board's width is at least {minimal}.".format(
-                minimal=settings.MINIMAL_BOARD_WIDTH))
+                minimal=settings.MINIMAL_BOARD_WIDTH
+            )
+        )
 
     if height < settings.MINIMAL_BOARD_WIDTH:
         _errors.append(
             "A board's height is at least {minimal}.".format(
-                minimal=settings.MINIMAL_BOARD_WIDTH))
+                minimal=settings.MINIMAL_BOARD_WIDTH
+            )
+        )
 
     if str(world.dtype) != settings.NUMPY_DATA_TYPE:
         _errors.append(
-            "A world, type numpy 2d array, should contain  data_type {}"
-            .format(settings.NUMPY_DATA_TYPE))
+            "A world, type numpy 2d array, should contain  data_type {}".format(
+                settings.NUMPY_DATA_TYPE
+            )
+        )
 
     possible_values = list(map(int, CellTypes))
     if any([value not in possible_values for value in unique(world)]):
         _errors.append(
-            "Invalid value found in array, values must be one off: {}"
-            .format(possible_values))
+            "Invalid value found in array, values must be one off: {}".format(
+                possible_values
+            )
+        )
 
     if _errors:
         raise TypeError("\n".join(_errors))
@@ -56,7 +64,8 @@ def random_world(height: int, width: int):
     :return:
     """
     chaos_world = random.randint(
-        low=2, size=(width, height), dtype=settings.NUMPY_DATA_TYPE)
+        low=2, size=(width, height), dtype=settings.NUMPY_DATA_TYPE
+    )
 
     is_valid_world(world=chaos_world)
 

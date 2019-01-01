@@ -40,7 +40,7 @@ def neighbour_count(cell_index: Tuple[int, int], world: ndarray) -> int:
     top_row, bottom_row = max(0, row - 1), min(row_count, row + 2)
     left_column, right_column = max(0, col - 1), min(column_count, col + 2)
 
-    subset = world[top_row: bottom_row, left_column: right_column]
+    subset = world[top_row:bottom_row, left_column:right_column]
 
     if world[cell_index] > 0:
         return max(count_nonzero(subset) - 1, 0)

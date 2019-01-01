@@ -35,8 +35,7 @@ def game_generator(world: np.ndarray, generations: int) -> np.ndarray:
     """
     increment = 0
 
-    while still_alive(
-            generations=generations, increment=increment, world=world):
+    while still_alive(generations=generations, increment=increment, world=world):
         world = world_mutation(world=world)
         increment += 1
         yield world
