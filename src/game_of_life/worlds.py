@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 import enum
 
-from numpy import random, ndarray, unique
+import numpy as np
 
 from game_of_life.conf import settings
 
@@ -12,7 +12,7 @@ class CellTypes(enum.IntEnum):
     SPAWNED = 1
 
 
-def is_valid_world(world: ndarray):
+def is_valid_world(world: np.ndarray):
     """
     Validates a given world for it's shape and content.
     :param world:
@@ -43,7 +43,7 @@ def is_valid_world(world: ndarray):
         )
 
     possible_values = list(map(int, CellTypes))
-    if any([value not in possible_values for value in unique(world)]):
+    if any([value not in possible_values for value in np.unique(world)]):
         _errors.append(
             "Invalid value found in array, values must be one off: {}".format(
                 possible_values
@@ -54,7 +54,7 @@ def is_valid_world(world: ndarray):
         raise TypeError("\n".join(_errors))
 
 
-def random_world(height: int, width: int):
+def random_world(height: int, width: int) -> np.ndarray:
     """
     Constructs a numpy ndarray of the given height and width with random
     living cells, denoted by integer 1.
@@ -63,10 +63,18 @@ def random_world(height: int, width: int):
     :param width: positive integer
     :return:
     """
-    chaos_world = random.randint(
+    chaos_world = np.random.randint(
         low=2, size=(width, height), dtype=settings.NUMPY_DATA_TYPE
     )
 
     is_valid_world(world=chaos_world)
 
     return chaos_world
+
+
+def preset_world(preset: str = None) -> np.ndarray:
+    pass
+
+
+def custom_world(preset: str = None) -> np.ndarray:
+    pass

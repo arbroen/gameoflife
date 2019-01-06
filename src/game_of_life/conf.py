@@ -8,7 +8,7 @@ from decouple import AutoConfig
 _HERE = Path(__file__).absolute()
 
 # Override regular config to be able to set search path for .env/.ini files.
-config = AutoConfig(search_path=os.environ.get("SHINE_ENV_FILE_PATH", default=_HERE))
+config = AutoConfig(search_path=os.environ.get("GOL_ENV_FILE_PATH", default=_HERE))
 
 
 class _Settings:

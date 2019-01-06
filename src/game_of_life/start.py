@@ -2,14 +2,17 @@
 import click
 
 from game_of_life.conf import settings
-from game_of_life.algorithm import game_of_life
+from game_of_life.algorithm import random_life, preset_life, custom_life
 
 
 _help_messages = {
-    "width": "The width of the world, an integer between {min} and {max}."
-        .format(min=settings.MINIMAL_BOARD_WIDTH, max=50),
-    "height": "The height of the world, an integer between {min} and {max}."
-        .format(min=settings.MINIMAL_BOARD_HEIGHT, max=50)
+    "width": "The width of the world, an integer between {min} and {max}.".format(
+        min=settings.MINIMAL_BOARD_WIDTH, max=50
+    ),
+    "height": "The height of the world, an integer between {min} and {max}.".format(
+        min=settings.MINIMAL_BOARD_HEIGHT, max=50
+    ),
+    "preset": "Select a possible option."
 }
 
 
@@ -19,14 +22,25 @@ def game_of_life_command():
 
 
 @game_of_life_command.command()
-def preset():
+@click.argument(
+    "choice",
+    type=click.Choice([
+        # @TODO: Insert list of names here.
+    ]),
+)
+def preset(choice):
     """
     A preset starting world.
-
-
-    :return:
     """
-    pass
+    preset_life(preset=choice)
+
+
+@game_of_life_command.command()
+def custom(path):
+    """
+    Pass your own file to play your custom made game_of_life.
+    """
+    custom_life(path=path)
 
 
 @game_of_life_command.command()
@@ -56,4 +70,4 @@ def random(generations, height, width):
     [INT] GENERATIONS is the number of life-cycles it iterates through
     before forcing and end. Input 0 for an infinite loop.
     """
-    game_of_life(width=width, generations=generations, height=height)
+    random_life(width=width, generations=generations, height=height)

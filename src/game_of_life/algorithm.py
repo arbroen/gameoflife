@@ -4,7 +4,7 @@ import time
 import numpy as np
 
 from game_of_life.conf import settings
-from game_of_life.worlds import random_world
+from game_of_life.worlds import random_world, preset_world
 from game_of_life.printer import WorldContextPrinter
 from game_of_life.mutation import world_mutation
 
@@ -26,7 +26,7 @@ def still_alive(world: np.ndarray, generations: int, increment: int) -> bool:
     return generations != increment
 
 
-def game_generator(world: np.ndarray, generations: int) -> np.ndarray:
+def world_generator(world: np.ndarray, generations: int) -> np.ndarray:
     """
     Generates the next sequence of life.
     :param world:
@@ -41,15 +41,29 @@ def game_generator(world: np.ndarray, generations: int) -> np.ndarray:
         yield world
 
 
-def game_of_life(height: int, width: int, generations: int) -> None:
+def game_generator(world: np.ndarray, generations: int):
     """
-    Should combine all the logic into one point of truth.
-    """
-    new_world = random_world(height=height, width=width)
 
+    :param world:
+    :param generations:
+    :return:
+    """
     with WorldContextPrinter() as printer:
-        printer(world=new_world)
+        printer(world=world)
 
-        for world in game_generator(world=new_world, generations=generations):
+        for world in world_generator(world=world, generations=generations):
             time.sleep(settings.DEFAULT_REFRESH_TIME)
             printer(world=world)
+
+
+def preset_life(preset: str) -> None:
+    world = preset_world()
+
+
+def random_life(height: int, width: int, generations: int) -> None:
+    world = random_world(height=height, width=width)
+    game_generator(world=world, generations=generations)
+
+
+def custom_life(path) -> None:
+    pass
