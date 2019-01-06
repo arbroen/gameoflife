@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 from numpy import zeros, ones
 
-from shine_on_life.algorithm import still_alive, game_generator
+from game_of_life.algorithm import still_alive, game_generator
 
 
 class TestAlgorithm:

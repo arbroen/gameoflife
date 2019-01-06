@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-from shine_on_life.conf import settings, _Settings
+from game_of_life.conf import settings, _Settings
 
 
 class TestSettings:

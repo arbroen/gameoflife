@@ -3,10 +3,10 @@ import time
 
 import numpy as np
 
-from shine_on_life.conf import settings
-from shine_on_life.worlds import random_world
-from shine_on_life.printer import WorldContextPrinter
-from shine_on_life.mutation import world_mutation
+from game_of_life.conf import settings
+from game_of_life.worlds import random_world
+from game_of_life.printer import WorldContextPrinter
+from game_of_life.mutation import world_mutation
 
 
 def still_alive(world: np.ndarray, generations: int, increment: int) -> bool:

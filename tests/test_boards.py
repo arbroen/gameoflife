@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-from shine_on_life.worlds import random_world
+from game_of_life.worlds import random_world
 
 
 class TestRandomBoard:

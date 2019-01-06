@@ -6,7 +6,7 @@ from pathlib import Path
 SETUP_DIR = Path.cwd()
 README_FILE = SETUP_DIR / "README.md"
 PYTHON_VERSION = SETUP_DIR / "runtime.txt"
-META_FILE = SETUP_DIR / "src" / "shine_on_life" / "__version__.py"
+META_FILE = SETUP_DIR / "src" / "game_of_life" / "__version__.py"
 
 
 def get_requirements(filename):
@@ -28,7 +28,7 @@ with PYTHON_VERSION.open(mode="r", encoding="utf-8") as f:
 
 
 setup(
-    name=about["__project__"],
+    name=about["__package_name__"],
     version=about["__version__"],
     description=about["__description__"],
     long_description=long_description,
@@ -39,6 +39,7 @@ setup(
     classifiers=[
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
     ],
@@ -49,7 +50,7 @@ setup(
     data_files=[],
     entry_points={  # Optional
         "console_scripts": [
-            "shine=shine_on_life.start:commands"]
+            "gol=game_of_life.start:commands"]
     },
     project_urls={},
 )

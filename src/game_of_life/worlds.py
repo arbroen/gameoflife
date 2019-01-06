@@ -3,7 +3,7 @@ import enum
 
 from numpy import random, ndarray, unique
 
-from shine_on_life.conf import settings
+from game_of_life.conf import settings
 
 
 class CellTypes(enum.IntEnum):

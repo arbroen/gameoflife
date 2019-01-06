@@ -1,8 +1,8 @@
 # -*- coding: utf8 -*-
 import click
 
-from shine_on_life.conf import settings
-from shine_on_life.algorithm import game_of_life
+from game_of_life.conf import settings
+from game_of_life.algorithm import game_of_life
 
 
 @click.group()
