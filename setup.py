@@ -50,7 +50,7 @@ setup(
     data_files=[],
     entry_points={  # Optional
         "console_scripts": [
-            "gol=game_of_life.start:commands"]
+            "gol=game_of_life.start:game_of_life_command"]
     },
     project_urls={},
 )
