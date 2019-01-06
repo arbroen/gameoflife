@@ -24,7 +24,7 @@ class _Settings:
         "DEFAULT_BOARD_HEIGHT", default=MINIMAL_BOARD_HEIGHT, cast=int
     )
     DEFAULT_REFRESH_TIME = config("DEFAULT_REFRESH_TIME", default=0.5, cast=float)
-    DEFAULT_GENERATIONS = config("DEFAULT_GENERATIONS", default=25, cast=int)
+    DEFAULT_GENERATION_COUNT = config("DEFAULT_GENERATIONS", default=25, cast=int)
     # Numpy specifics
     NUMPY_DATA_TYPE = "int8"
 

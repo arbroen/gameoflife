@@ -20,10 +20,9 @@ _HELP_MSG = {
     "height": "The height of the world, an integer between {min} and {max}.".format(
         min=settings.MINIMAL_BOARD_HEIGHT, max=50
     ),
-    "generations":
-        "GENERATIONS is the number of life-cycles it iterates through"
-        "before forcing and end. Input 0 for an infinite loop.",
-    "preset": "Select a possible option."
+    "generations": "GENERATIONS is the number of life-cycles it iterates through"
+    "before forcing and end. Input 0 for an infinite loop.",
+    "preset": "Select a possible option.",
 }
 
 
@@ -44,9 +43,11 @@ def game_of_life_command():
 @game_of_life_command.command()
 @click.argument(
     "choice",
-    type=click.Choice([
-        # @TODO: Insert list of names here.
-    ]),
+    type=click.Choice(
+        [
+            # @TODO: Insert list of names here.
+        ]
+    ),
 )
 @click.option(
     "-g",
@@ -55,7 +56,7 @@ def game_of_life_command():
     default=settings.DEFAULT_GENERATIONS,
     show_default=True,
     help=_HELP_MSG["generations"],
-    type=click.INT
+    type=click.INT,
 )
 def preset(choice, generations):
     """
@@ -65,10 +66,7 @@ def preset(choice, generations):
 
 
 @game_of_life_command.command()
-@click.argument(
-    "file_path",
-    type=click.Path(),
-)
+@click.argument("file_path", type=click.Path())
 @click.option(
     "-g",
     "--generations",
@@ -76,7 +74,7 @@ def preset(choice, generations):
     default=settings.DEFAULT_GENERATIONS,
     show_default=True,
     help=_HELP_MSG["generations"],
-    type=click.INT
+    type=click.INT,
 )
 def custom(file_path, generations):
     """
@@ -93,7 +91,7 @@ def custom(file_path, generations):
     default=settings.DEFAULT_GENERATIONS,
     show_default=True,
     help=_HELP_MSG["generations"],
-    type=click.INT
+    type=click.INT,
 )
 @click.option(
     "-h",
@@ -115,4 +113,4 @@ def custom(file_path, generations):
 )
 def random(generations, height, width):
     """A randomized starting world for the game_of_life algorithm."""
-    random_life(width=width, generations=generations, height=height)
+    random_life(width=width, height=height, generations=generations)
