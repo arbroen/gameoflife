@@ -56,8 +56,9 @@ def game_generator(world: np.ndarray, generations: int):
             printer(world=world)
 
 
-def preset_life(preset: str) -> None:
+def preset_life(preset: str, generations: int) -> None:
     world = preset_world()
+    game_generator(world=world, generations=generations)
 
 
 def random_life(height: int, width: int, generations: int) -> None:
@@ -65,5 +66,6 @@ def random_life(height: int, width: int, generations: int) -> None:
     game_generator(world=world, generations=generations)
 
 
-def custom_life(path) -> None:
-    pass
+def custom_life(path: str, generations: int) -> None:
+    world = preset_world()
+    game_generator(world=world, generations=generations)
