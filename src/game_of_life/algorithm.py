@@ -7,6 +7,7 @@ from game_of_life.conf import settings
 from game_of_life.worlds import random_world, preset_world, custom_world
 from game_of_life.printer import WorldContextPrinter
 from game_of_life.mutation import world_mutation
+from game_of_life.presets import PRESETS
 
 
 def still_alive(world: np.ndarray, generations: int, increment: int) -> bool:
@@ -57,9 +58,10 @@ def game_generator(world: np.ndarray, generations: int):
 
 
 def preset_life(preset: str, generations: int) -> None:
-
-    world = preset_world()
-    game_generator(world=world, generations=generations)
+    choice = PRESETS[preset]
+    print(choice)
+    # world = preset_world()
+    # game_generator(world=world, generations=generations)
 
 
 def random_life(height: int, width: int, generations: int) -> None:
