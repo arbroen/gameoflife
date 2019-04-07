@@ -27,7 +27,17 @@ _HELP_MSG = {
 
 
 @click.group()
-def game_of_life_command():
+@click.option(
+    "-g",
+    "--generations",
+    "generations",
+    default=settings.DEFAULT_GENERATION_COUNT,
+    show_default=True,
+    help=_HELP_MSG["generations"],
+    type=click.INT,
+)
+@click.pass_context
+def game_of_life_command(context, generations):
     """My implementation of the game of life algorithm.
 
     For any of the commands below you can access it's information with:
@@ -38,6 +48,7 @@ def game_of_life_command():
     PS. This interface was written with the use of click. A beautiful alternative to
     argparse hell.
     """
+    context.generations = generations
 
 
 @game_of_life_command.command()
@@ -49,50 +60,26 @@ def game_of_life_command():
         ]
     ),
 )
-@click.option(
-    "-g",
-    "--generations",
-    "generations",
-    default=settings.DEFAULT_GENERATION_COUNT,
-    show_default=True,
-    help=_HELP_MSG["generations"],
-    type=click.INT,
-)
-def preset(choice, generations):
+@click.pass_context
+def preset(context, choice):
     """
     A preset starting world.
     """
-    preset_life(preset=choice, generations=generations)
+    preset_life(preset=choice, generations=context.generations)
 
 
 @game_of_life_command.command()
-@click.argument("file_path", type=click.Path())
-@click.option(
-    "-g",
-    "--generations",
-    "generations",
-    default=settings.DEFAULT_GENERATION_COUNT,
-    show_default=True,
-    help=_HELP_MSG["generations"],
-    type=click.INT,
-)
+@click.argument("csv_file_path", type=click.File(mode="r"))
 def custom(file_path, generations):
     """
-    Pass your own file to play your custom made game_of_life.
+    Pass your own csv_file to play your custom made game_of_life. The input must be rows
+    off integers supported. These can be checked in the CellTypes class.
     """
     custom_life(path=file_path, generations=generations)
 
 
 @game_of_life_command.command()
-@click.option(
-    "-g",
-    "--generations",
-    "generations",
-    default=settings.DEFAULT_GENERATION_COUNT,
-    show_default=True,
-    help=_HELP_MSG["generations"],
-    type=click.INT,
-)
+@click.pass_context
 @click.option(
     "-h",
     "--height",
@@ -111,6 +98,6 @@ def custom(file_path, generations):
     help=_HELP_MSG["width"],
     type=click.IntRange(min=settings.MINIMAL_BOARD_WIDTH, max=50),
 )
-def random(generations, height, width):
+def random(context, height, width):
     """A randomized starting world for the game_of_life algorithm."""
-    random_life(width=width, height=height, generations=generations)
+    random_life(width=width, height=height, generations=context.generations)

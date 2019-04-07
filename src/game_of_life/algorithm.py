@@ -4,7 +4,7 @@ import time
 import numpy as np
 
 from game_of_life.conf import settings
-from game_of_life.worlds import random_world, preset_world
+from game_of_life.worlds import random_world, preset_world, custom_world
 from game_of_life.printer import WorldContextPrinter
 from game_of_life.mutation import world_mutation
 
@@ -67,5 +67,5 @@ def random_life(height: int, width: int, generations: int) -> None:
 
 
 def custom_life(path: str, generations: int) -> None:
-    world = preset_world()
+    world = custom_world()
     game_generator(world=world, generations=generations)
