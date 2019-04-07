@@ -80,12 +80,12 @@ def preset(context, choice):
 @game_of_life_command.command()
 @click.pass_obj
 @click.argument("csv_file_path", type=click.File(mode="r"))
-def custom(file_path, generations):
+def custom(context, file_path):
     """
     Pass your own csv_file to play your custom made game_of_life. The input must be rows
     off integers supported. These can be checked in the CellTypes class.
     """
-    custom_life(path=file_path, generations=generations)
+    custom_life(path=file_path, generations=context.generations)
 
 
 @game_of_life_command.command()
