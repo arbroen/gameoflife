@@ -57,6 +57,7 @@ def game_generator(world: np.ndarray, generations: int):
 
 
 def preset_life(preset: str, generations: int) -> None:
+
     world = preset_world()
     game_generator(world=world, generations=generations)
 

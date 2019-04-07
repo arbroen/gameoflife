@@ -12,6 +12,7 @@ import click
 from collections import namedtuple
 
 from game_of_life.conf import settings
+from game_of_life.presets import PRESETS
 from game_of_life.algorithm import random_life, preset_life, custom_life
 
 
@@ -64,11 +65,7 @@ def game_of_life_command(ctx, generations):
 @click.pass_obj
 @click.argument(
     "choice",
-    type=click.Choice(
-        [
-            # @TODO: Insert list of names here.
-        ]
-    ),
+    type=click.Choice(PRESETS.keys())
 )
 def preset(context, choice):
     """

@@ -13,6 +13,7 @@ config = AutoConfig(search_path=os.environ.get("GOL_ENV_FILE_PATH", default=_HER
 
 class _Settings:
     DEBUG = config("DEBUG", default=False, cast=bool)
+    PRESET_DIR = _HERE.parents[1] / "presets"
 
     # Default board settings
     MINIMAL_BOARD_WIDTH = config("MINIMAL_BOARD_WIDTH", default=10, cast=int)
