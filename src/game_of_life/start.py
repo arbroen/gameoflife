@@ -9,6 +9,8 @@ for different interfaces in the possible future.
 """
 import click
 
+from collections import namedtuple
+
 from game_of_life.conf import settings
 from game_of_life.algorithm import random_life, preset_life, custom_life
 
@@ -26,6 +28,9 @@ _HELP_MSG = {
 }
 
 
+Context = namedtuple("Context", ["generations"])
+
+
 @click.group()
 @click.option(
     "-g",
@@ -37,21 +42,26 @@ _HELP_MSG = {
     type=click.INT,
 )
 @click.pass_context
-def game_of_life_command(context, generations):
+def game_of_life_command(ctx, generations):
     """My implementation of the game of life algorithm.
 
     For any of the commands below you can access it's information with:
 
     \b
         gol <<command>> --help
+    \b
+    Example command
+    \b
+        gol --generations 0 random
 
     PS. This interface was written with the use of click. A beautiful alternative to
     argparse hell.
     """
-    context.generations = generations
+    ctx.obj = Context(generations=generations)
 
 
 @game_of_life_command.command()
+@click.pass_obj
 @click.argument(
     "choice",
     type=click.Choice(
@@ -60,7 +70,6 @@ def game_of_life_command(context, generations):
         ]
     ),
 )
-@click.pass_context
 def preset(context, choice):
     """
     A preset starting world.
@@ -69,6 +78,7 @@ def preset(context, choice):
 
 
 @game_of_life_command.command()
+@click.pass_obj
 @click.argument("csv_file_path", type=click.File(mode="r"))
 def custom(file_path, generations):
     """
@@ -79,7 +89,7 @@ def custom(file_path, generations):
 
 
 @game_of_life_command.command()
-@click.pass_context
+@click.pass_obj
 @click.option(
     "-h",
     "--height",
