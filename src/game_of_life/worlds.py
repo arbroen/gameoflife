@@ -1,7 +1,8 @@
 # -*- coding: utf8 -*-
 import enum
-
 import numpy as np
+
+from pathlib import Path
 
 from game_of_life.conf import settings
 
@@ -72,9 +73,12 @@ def random_world(height: int, width: int) -> np.ndarray:
     return chaos_world
 
 
-def preset_world(preset: str = None) -> np.ndarray:
-    pass
+def preset_world(preset: Path) -> np.ndarray:
+    loaded_world = np.loadtxt(str(preset), delimiter=";", dtype=settings.NUMPY_DATA_TYPE)
 
+    is_valid_world(world=loaded_world)
+
+    return loaded_world
 
 def custom_world(preset: str = None) -> np.ndarray:
     pass

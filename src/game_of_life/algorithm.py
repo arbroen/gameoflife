@@ -58,10 +58,8 @@ def game_generator(world: np.ndarray, generations: int):
 
 
 def preset_life(preset: str, generations: int) -> None:
-    choice = PRESETS[preset]
-    print(choice)
-    # world = preset_world()
-    # game_generator(world=world, generations=generations)
+    world = preset_world(PRESETS.get(preset, None))
+    game_generator(world=world, generations=generations)
 
 
 def random_life(height: int, width: int, generations: int) -> None:
