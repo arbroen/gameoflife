@@ -3,8 +3,8 @@ from typing import Tuple
 
 from numpy import ndarray, ndenumerate, count_nonzero, zeros
 
-from game_of_life.worlds import CellTypes
-from game_of_life.conf import settings
+from gol.worlds import CellTypes
+from gol.conf import settings
 
 
 def cell_lives(cycle: CellTypes, count: int) -> bool:

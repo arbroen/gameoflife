@@ -1,2 +1,0 @@
--r default.txt
-tox==3.1.2

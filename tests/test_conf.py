@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-from game_of_life.conf import settings, _Settings
+from gol.conf import settings, _Settings
 
 
 class TestSettings:

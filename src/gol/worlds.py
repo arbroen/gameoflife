@@ -4,7 +4,7 @@ import numpy as np
 
 from pathlib import Path
 
-from game_of_life.conf import settings
+from gol.conf import settings
 
 
 class CellTypes(enum.IntEnum):
@@ -74,11 +74,14 @@ def random_world(height: int, width: int) -> np.ndarray:
 
 
 def preset_world(preset: Path) -> np.ndarray:
-    loaded_world = np.loadtxt(str(preset), delimiter=";", dtype=settings.NUMPY_DATA_TYPE)
+    loaded_world = np.loadtxt(
+        str(preset), delimiter=";", dtype=settings.NUMPY_DATA_TYPE
+    )
 
     is_valid_world(world=loaded_world)
 
     return loaded_world
+
 
 def custom_world(preset: str = None) -> np.ndarray:
     pass

@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-from game_of_life.worlds import random_world
+from gol.worlds import random_world
 
 
 class TestRandomBoard:

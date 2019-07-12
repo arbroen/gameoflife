@@ -1,8 +1,8 @@
 # -*- coding: utf8 -*-
 from numpy.testing import assert_array_equal
 
-from game_of_life.worlds import CellTypes
-from game_of_life.mutation import (
+from gol.worlds import CellTypes
+from gol.mutation import (
     cell_lives,
     cell_spawns,
     cell_mutation,

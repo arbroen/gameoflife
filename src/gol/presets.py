@@ -2,7 +2,7 @@
 from typing import Dict
 from pathlib import Path
 
-from game_of_life.conf import settings
+from gol.conf import settings
 
 
 def load_presets() -> Dict[str, Path]:

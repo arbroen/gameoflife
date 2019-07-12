@@ -11,9 +11,9 @@ import click
 
 from collections import namedtuple
 
-from game_of_life.conf import settings
-from game_of_life.presets import PRESETS
-from game_of_life.algorithm import random_life, preset_life, custom_life
+from gol.conf import settings
+from gol.presets import PRESETS
+from gol.algorithm import random_life, preset_life, custom_life
 
 
 _HELP_MSG = {
@@ -63,10 +63,7 @@ def game_of_life_command(ctx, generations):
 
 @game_of_life_command.command()
 @click.pass_obj
-@click.argument(
-    "choice",
-    type=click.Choice(PRESETS.keys())
-)
+@click.argument("choice", type=click.Choice(PRESETS.keys()))
 def preset(context, choice):
     """
     A preset starting world.

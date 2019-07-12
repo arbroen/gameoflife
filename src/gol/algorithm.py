@@ -3,11 +3,11 @@ import time
 
 import numpy as np
 
-from game_of_life.conf import settings
-from game_of_life.worlds import random_world, preset_world, custom_world
-from game_of_life.printer import WorldContextPrinter
-from game_of_life.mutation import world_mutation
-from game_of_life.presets import PRESETS
+from gol.conf import settings
+from gol.worlds import random_world, preset_world, custom_world
+from gol.printer import WorldContextPrinter
+from gol.mutation import world_mutation
+from gol.presets import PRESETS
 
 
 def still_alive(world: np.ndarray, generations: int, increment: int) -> bool:
@@ -58,7 +58,7 @@ def game_generator(world: np.ndarray, generations: int):
 
 
 def preset_life(preset: str, generations: int) -> None:
-    world = preset_world(PRESETS.get(preset, None))
+    world = preset_world(PRESETS[preset])
     game_generator(world=world, generations=generations)
 
 
