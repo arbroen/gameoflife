@@ -7,14 +7,13 @@ The interface to the algorithm via command line.
 The implementation logic is completely separated from this interface, to easily allow
 for different interfaces in the possible future.
 """
-import click
-
 from collections import namedtuple
 
+import click
+
+from gol.algorithm import custom_life, preset_life, random_life
 from gol.conf import settings
 from gol.presets import PRESETS
-from gol.algorithm import random_life, preset_life, custom_life
-
 
 _HELP_MSG = {
     "width": "The width of the world, an integer between {min} and {max}.".format(

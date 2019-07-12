@@ -4,10 +4,10 @@ import time
 import numpy as np
 
 from gol.conf import settings
-from gol.worlds import random_world, preset_world, custom_world
-from gol.printer import WorldContextPrinter
 from gol.mutation import world_mutation
 from gol.presets import PRESETS
+from gol.printer import WorldContextPrinter
+from gol.worlds import custom_world, preset_world, random_world
 
 
 def still_alive(world: np.ndarray, generations: int, increment: int) -> bool:

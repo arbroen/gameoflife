@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*-
-from typing import Dict
 from pathlib import Path
+from typing import Dict
 
 from gol.conf import settings
 

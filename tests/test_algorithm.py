@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-from numpy import zeros, ones
+from numpy import ones, zeros
 
 from gol.algorithm import still_alive, world_generator
 

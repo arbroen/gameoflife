@@ -1,8 +1,8 @@
 # -*- coding: utf8 -*-
 import enum
-import numpy as np
-
 from pathlib import Path
+
+import numpy as np
 
 from gol.conf import settings
 

@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*-
-from pytest import fixture
 from numpy import array
+from pytest import fixture
 
 
 @fixture

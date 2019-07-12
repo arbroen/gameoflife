@@ -1,14 +1,14 @@
 # -*- coding: utf8 -*-
 from numpy.testing import assert_array_equal
 
-from gol.worlds import CellTypes
 from gol.mutation import (
     cell_lives,
-    cell_spawns,
     cell_mutation,
+    cell_spawns,
     neighbour_count,
     world_mutation,
 )
+from gol.worlds import CellTypes
 
 
 class TestMutation:

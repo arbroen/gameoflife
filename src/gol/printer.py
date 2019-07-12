@@ -5,11 +5,11 @@ Printing is going to be fancy as fly. With colors.
 - green ones are freshly spouted.
 - red zeros just perished.
 """
-import numpy as np
-
 from typing import Callable
-from colorama import init as colorama_init
+
+import numpy as np
 from colorama import Fore, Style
+from colorama import init as colorama_init
 
 from .worlds import CellTypes
 

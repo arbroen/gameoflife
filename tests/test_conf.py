@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-from gol.conf import settings, _Settings
+from gol.conf import _Settings, settings
 
 
 class TestSettings:

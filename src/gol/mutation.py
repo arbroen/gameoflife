@@ -1,10 +1,10 @@
 # -*- coding: utf8 -*-
 from typing import Tuple
 
-from numpy import ndarray, ndenumerate, count_nonzero, zeros
+from numpy import count_nonzero, ndarray, ndenumerate, zeros
 
-from gol.worlds import CellTypes
 from gol.conf import settings
+from gol.worlds import CellTypes
 
 
 def cell_lives(cycle: CellTypes, count: int) -> bool:

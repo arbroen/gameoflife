@@ -1,9 +1,8 @@
 # -*- coding: utf8 -*-
 import os
-
 from pathlib import Path
-from decouple import AutoConfig
 
+from decouple import AutoConfig
 
 _HERE = Path(__file__).absolute()
 
