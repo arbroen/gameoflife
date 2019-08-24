@@ -2,7 +2,6 @@
 import time
 
 import numpy as np
-
 from gol.conf import settings
 from gol.mutation import world_mutation
 from gol.presets import PRESETS

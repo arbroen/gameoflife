@@ -1,6 +1,4 @@
 # -*- coding: utf8 -*-
-from numpy.testing import assert_array_equal
-
 from gol.mutation import (
     cell_lives,
     cell_mutation,
@@ -9,6 +7,7 @@ from gol.mutation import (
     world_mutation,
 )
 from gol.worlds import CellTypes
+from numpy.testing import assert_array_equal
 
 
 class TestMutation:

@@ -3,7 +3,6 @@ import enum
 from pathlib import Path
 
 import numpy as np
-
 from gol.conf import settings
 
 
