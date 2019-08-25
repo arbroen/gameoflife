@@ -52,12 +52,12 @@ class WorldContextPrinter:
         self.print_function(chr(27) + "[2J")
 
     def __call__(self, *args, **kwargs):
-        return self.print(*args, **kwargs)
+        return self.emit(*args, **kwargs)
 
     def __enter__(self):
         return self
 
-    def print(self, world: np.ndarray):
+    def emit(self, world: np.ndarray):
         self.clear_shell_display()
         _temp = ""
 
