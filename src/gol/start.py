@@ -1,4 +1,3 @@
-# -*- coding: utf8 -*-
 """
 The interface to the algorithm via command line.
 
@@ -10,7 +9,6 @@ for different interfaces in the possible future.
 from collections import namedtuple
 
 import click
-
 from gol.algorithm import custom_life, preset_life, random_life
 from gol.conf import settings
 from gol.presets import PRESETS

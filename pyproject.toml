@@ -26,8 +26,6 @@ colorama = "^0.4.1"
 
 [tool.poetry.dev-dependencies]
 tox = "^3.13"
-coverage = "^4.5"
-pytest = "^5.0"
 
 [tool.poetry.extras]
 linters = ["black", "flake8"]

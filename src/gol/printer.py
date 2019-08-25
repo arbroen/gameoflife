@@ -1,10 +1,10 @@
-# -*- coding: utf8 -*-
 """
 Printing is going to be fancy as fly. With colors.
 
 - green ones are freshly spouted.
 - red zeros just perished.
 """
+from logging import getLogger
 from typing import Callable
 
 import numpy as np
@@ -18,6 +18,9 @@ COLOUR_SCHEME = {
     CellTypes.SPAWNED.value: Fore.GREEN,
     CellTypes.ALIVE.value: Fore.YELLOW,
 }
+
+
+logger = getLogger(__name__)
 
 
 def colorize(value) -> str:
@@ -39,7 +42,7 @@ class WorldContextPrinter:
         print_func and formatter for example.
         """
         colorama_init()
-        self.print_function = print_func or print
+        self.print_function = print_func or logger.info
         self.formatter = formatter or colorize
 
     def clear_shell_display(self):

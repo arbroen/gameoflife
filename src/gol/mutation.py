@@ -1,4 +1,3 @@
-# -*- coding: utf8 -*-
 from typing import Tuple
 
 from gol.conf import settings
