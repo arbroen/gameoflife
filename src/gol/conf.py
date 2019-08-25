@@ -1,4 +1,6 @@
+import logging
 import os
+import sys
 from pathlib import Path
 
 from decouple import AutoConfig
@@ -26,6 +28,31 @@ class _Settings:
     DEFAULT_GENERATION_COUNT = config("DEFAULT_GENERATIONS", default=25, cast=int)
     # Numpy specifics
     NUMPY_DATA_TYPE = "int8"
+    LOGGING = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "advanced": {
+                "format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"
+            },
+            "message_only": {"format": "%(message)s"},
+        },
+        "handlers": {
+            "normal": {
+                "class": "logging.StreamHandler",
+                "formatter": "advanced",
+                "level": logging.DEBUG,
+            },
+            "printer": {
+                "class": "logging.StreamHandler",
+                "formatter": "message_only",
+                "level": logging.INFO,
+                "stream": sys.stdout,
+            },
+        },
+        "printer": {"handlers": ["printer"], "level": logging.INFO},
+        "root": {"handlers": ["printer"], "level": logging.DEBUG},
+    }
 
 
 settings = _Settings()

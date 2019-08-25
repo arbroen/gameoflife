@@ -4,7 +4,7 @@ Printing is going to be fancy as fly. With colors.
 - green ones are freshly spouted.
 - red zeros just perished.
 """
-from logging import getLogger
+import logging
 from typing import Callable
 
 import numpy as np
@@ -20,7 +20,7 @@ COLOUR_SCHEME = {
 }
 
 
-logger = getLogger(__name__)
+logger = logging.getLogger("printer")
 
 
 def colorize(value) -> str:

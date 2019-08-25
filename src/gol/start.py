@@ -7,6 +7,7 @@ The implementation logic is completely separated from this interface, to easily 
 for different interfaces in the possible future.
 """
 from collections import namedtuple
+from logging.config import dictConfig
 
 import click
 from gol.algorithm import custom_life, preset_life, random_life
@@ -55,6 +56,7 @@ def game_of_life_command(ctx, generations):
     PS. This interface was written with the use of click. A beautiful alternative to
     argparse hell.
     """
+    dictConfig(settings.LOGGING)
     ctx.obj = Context(generations=generations)
 
 
