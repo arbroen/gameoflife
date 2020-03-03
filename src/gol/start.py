@@ -10,6 +10,7 @@ from collections import namedtuple
 from logging.config import dictConfig
 
 import click
+
 from gol.algorithm import custom_life, preset_life, random_life
 from gol.conf import settings
 from gol.presets import PRESETS
