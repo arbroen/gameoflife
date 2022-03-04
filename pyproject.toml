@@ -17,22 +17,36 @@ classifiers = [
         "Programming Language :: Python :: Implementation :: PyPy"
 ]
 
+# Numpy is a dependency nightmare. Assume it will break on next update.
 [tool.poetry.dependencies]
-python = "^3.5"
-click = "^7.0"
-numpy = "^1.16"
-python-decouple = "^3.1"
-colorama = "^0.4.1"
+python = ">=3.7,<=3.9"
+click = ">7.0"
+numpy = ">1.16,<1.22"
+python-decouple = ">3.1"
+colorama = ">0.4.1"
 
 [tool.poetry.dev-dependencies]
-tox = "^3.13"
+black = {version = "^22.1.0", extras = ["linters"]}
+flake8 = {version = "^4.0.1", extras = ["linters"]}
+isort = {version = "^5.10.1", extras = ["linters"]}
+mypy = {version = "^0.931", extras = ["linters"]}
+coverage = {version = "^6.3.2", extras = ["testing"]}
+pytest = {version = "^7.0.1", extras = ["testing"]}
+tox = {version = "^3.24.5"}
+pep8-naming = {version = "^0.12.1", extras = ["linters"]}
+flake8-print = {version = "^4.0.0", extras = ["linters"]}
+flake8-colors = {version = "^0.1.9", extras = ["linters"]}
+safety = {version = "^1.10.3", extras = ["linters"]}
+bandit = {version = "^1.7.3", extras = ["linters"]}
 
 [tool.poetry.extras]
-linters = ["black", "flake8"]
+linters = ["black", "flake8", "isort", "mypy"]
+testing = ["pytest", "coverage"]
 
 [tool.poetry.scripts]
 gol = "gol.start:game_of_life_command"
 
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry>=1,<2"]
+build-backend = "poetry.core.masonry.api"
+

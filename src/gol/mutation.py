@@ -1,8 +1,9 @@
 from typing import Tuple
 
+from numpy import count_nonzero, ndarray, ndenumerate, zeros
+
 from gol.conf import settings
 from gol.worlds import CellTypes
-from numpy import count_nonzero, ndarray, ndenumerate, zeros
 
 
 def cell_lives(cycle: CellTypes, count: int) -> bool:

@@ -7,10 +7,9 @@ Printing is going to be fancy as fly. With colors.
 import logging
 from typing import Callable
 
+import numpy as np
 from colorama import Fore, Style
 from colorama import init as colorama_init
-
-import numpy as np
 
 from .worlds import CellTypes
 
