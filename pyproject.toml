@@ -19,9 +19,9 @@ classifiers = [
 
 # Numpy is a dependency nightmare. Assume it will break on next update.
 [tool.poetry.dependencies]
-python = ">=3.7,<=3.9"
+python = ">=3.8,<=3.9"
 click = ">7.0"
-numpy = ">1.16,<1.22"
+numpy = ">1.22"
 python-decouple = ">3.1"
 colorama = ">0.4.1"
 
