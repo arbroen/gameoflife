@@ -3,13 +3,18 @@
 /*/
 
 # Unignore items meant for git
+## Directories
 !/src/
 !/tests
+
+## Files
 !.pre-commit-config.yaml
 !pyproject.toml
 !README.md
 !tox.ini
 !poetry.lock
+!Dockerfile
+!.dockerignore
 
 # Re-ignore pycaches
 **/__pycache__/
