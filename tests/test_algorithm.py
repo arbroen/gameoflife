@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
-from gol.algorithm import still_alive, world_generator
 from numpy import ones, zeros
+
+from gol.algorithm import still_alive, world_generator
 
 
 class TestAlgorithm:

@@ -1,4 +1,6 @@
 # -*- coding: utf8 -*-
+from numpy.testing import assert_array_equal
+
 from gol.mutation import (
     cell_lives,
     cell_mutation,
@@ -7,7 +9,6 @@ from gol.mutation import (
     world_mutation,
 )
 from gol.worlds import CellTypes
-from numpy.testing import assert_array_equal
 
 
 class TestMutation:
@@ -52,7 +53,7 @@ class TestMutation:
     def test_neighbour_counting(self, small_world):
         """
         Neighbour count should count the 8 cells close to the index, but
-        exclude it's own value.
+        exclude its own value.
         :param small_world:
         :return:
         """
@@ -85,7 +86,7 @@ class TestMutation:
         """
         expected = [[0, 0, 2, 2], [0, 1, 0, 0], [0, 2, 0, 2], [0, 1, 0, 2]]
         next_world = world_mutation(world=small_world)
-        assert_array_equal(x=next_world, y=expected)
+        assert_array_equal(actual=next_world, desired=expected)
 
         medium_expected = [
             [0, 0, 2, 2, 0, 0, 2],
@@ -97,4 +98,4 @@ class TestMutation:
             [2, 0, 2, 0, 0, 0, 0],
         ]
         next_world_medium = world_mutation(world=medium_world)
-        assert_array_equal(x=next_world_medium, y=medium_expected)
+        assert_array_equal(actual=next_world_medium, desired=medium_expected)

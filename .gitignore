@@ -10,3 +10,6 @@
 !README.md
 !tox.ini
 !poetry.lock
+
+# Re-ignore pycaches
+**/__pycache__/

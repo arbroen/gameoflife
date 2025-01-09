@@ -6,6 +6,7 @@ The interface to the algorithm via command line.
 The implementation logic is completely separated from this interface, to easily allow
 for different interfaces in the possible future.
 """
+
 from collections import namedtuple
 from logging.config import dictConfig
 

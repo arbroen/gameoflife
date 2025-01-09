@@ -1,38 +1,45 @@
-[tool.poetry]
-name = "gol"
-version = "0.1.2"
-description = "Game of life python demonstration project"
+[project]
+name = "gameoflife"
+version = "0.1.0"
+description = "Game of Life by John Conway"
+authors = [
+    {name = "Arbroen",email = "info@arbonit.nl"}
+]
 readme = "README.md"
-authors = ["Jeroen Arbon <jeroen.arbon@gmail.com>"]
+# numpy dictates >3.9
+requires-python = ">=3.10"
+dependencies = [
+    "click (>=8.1.8,<9.0.0)",
+    "python-decouple (>=3.8,<4.0)",
+    "numpy (>=2.2.1,<3.0.0)",
+    "colorama (>=0.4.6,<0.5.0)",
+]
+
+[project.optional-dependencies]
+# Essentially pip's "extras" argument used by tox. Thus these are not version-pinned!
+linters = ["black", "flake8", "isort"]
+tests = ["pytest", "pytest-cov", "coverage"]
+security = ["safety", "bandit"]
+
+[tool.poetry]
 packages = [
     { include = "gol", from = "src" },
 ]
-classifiers = [
-        "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License",
-        "Topic :: Games/Entertainment :: Simulation",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: Implementation :: PyPy"
-]
-
-[tool.poetry.dependencies]
-python = "^3.5"
-click = "^7.0"
-numpy = "^1.16"
-python-decouple = "^3.1"
-colorama = "^0.4.1"
-
-[tool.poetry.dev-dependencies]
-tox = "^3.13"
-
-[tool.poetry.extras]
-linters = ["black", "flake8"]
 
 [tool.poetry.scripts]
 gol = "gol.start:game_of_life_command"
 
+[tool.poetry.group.dev.dependencies]
+# Pycharm requires setuptools -> isolate as dev dependency.
+setuptools = "^75.8.0"
+black = "^24.10.0"
+flake8 = "^7.1.1"
+pytest = "^8.3.4"
+tox = "^4.23.2"
+safety = "^3.2.14"
+bandit = "^1.8.0"
+pytest-cov = "^6.0.0"
+
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
